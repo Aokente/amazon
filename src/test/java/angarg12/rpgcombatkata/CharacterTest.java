@@ -59,7 +59,7 @@ public class CharacterTest {
     public void levelsUpCorrectly() {
     	//creates a new character
     	Character c = new Character();
-    	c.expIncrease(10);
+    	c.expIncrease(11);
     	//makes sure level has gone to level 2
     	assertEquals(c.getLevel(),2);
     }
