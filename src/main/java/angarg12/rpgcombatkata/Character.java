@@ -16,4 +16,23 @@ public class Character {
 	public boolean isAlive() {
 		return alive;
 	}
+
+    public void damage(int damage){
+        health-= damage;
+        if (health <= 0){
+            alive=false;
+        }
+    }
+
+    public void attack(Character opponent, int damage){
+        if (opponent == this){
+            return;
+        } else if (opponent.isAlive() && damage <= opponent.getHealth()) {
+            opponent.damage(damage);
+        }
+    }
+
+    public static void main(String[] args) {
+
+    }
 }
