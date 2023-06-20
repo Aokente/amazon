@@ -12,9 +12,18 @@ public class Game {
         Character chara2 = new Character();
         players.add(chara2);
         while(!finished){
-            chara1.attack(chara2, 10);
-            chara2.attack(chara1, 20);
+            if (chara1.isAlive()) {
+                chara1.attack(chara2, 10);
+            }
+            if (chara2.isAlive()) {
+                chara2.attack(chara1, 20);
+            }
+            if (!chara1.isAlive() || !chara2.isAlive()){
+                finished = true;
+            }
         }
 
     }
+
+
 }

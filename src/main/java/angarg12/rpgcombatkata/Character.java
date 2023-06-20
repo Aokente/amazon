@@ -54,18 +54,22 @@ public class Character {
         if (health <= 0){
             alive=false;
         }
+        System.out.println(getHealth());
     }
 
     public void attack(Character opponent, int damage){
     	//makes sure the opponent is not the same person
         if (stamina < 10){
+            System.out.println("Unable to attack.");
             regainStamina(5);
             return;
         }
         if (opponent == this){
             return;
         } else if (opponent.isAlive() && damage <= opponent.getHealth()) {
+            System.out.println("Attacked "+opponent);
             opponent.damage(damage);
+            stamina -= 10;
         }
     }
 
