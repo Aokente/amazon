@@ -31,8 +31,4 @@ public class Character {
             opponent.damage(damage);
         }
     }
-
-    public static void main(String[] args) {
-
-    }
 }
