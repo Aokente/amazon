@@ -6,6 +6,7 @@ public class Character {
     private int health = 1000;
     private int level = 1;
     private int exp = 0;
+    private int stamina = 100;
     private boolean alive = true;
 
 	public int getHealth() {
@@ -53,14 +54,31 @@ public class Character {
         if (health <= 0){
             alive=false;
         }
+        System.out.println(getHealth());
     }
 
     public void attack(Character opponent, int damage){
-    	//makes sure the opponent is not the same person 
+    	//makes sure the opponent is not the same person
+        if (stamina < 10){
+            System.out.println("Unable to attack.");
+            regainStamina(5);
+            return;
+        }
         if (opponent == this){
             return;
         } else if (opponent.isAlive() && damage <= opponent.getHealth()) {
+            System.out.println("Attacked "+opponent);
             opponent.damage(damage);
+            stamina -= 10;
         }
     }
+
+    public void regainStamina (int stamIncrease){
+        stamina += stamIncrease;
+        if (stamina > 100){
+            stamina = 100;
+        }
+    }
+
+
 }
