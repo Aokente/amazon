@@ -1,8 +1,11 @@
 package angarg12.rpgcombatkata;
 
+import java.lang.Math.*;
+
 public class Character {
     private int health = 1000;
     private int level = 1;
+    private int exp = 0;
     private boolean alive = true;
 
 	public int getHealth() {
@@ -12,9 +15,35 @@ public class Character {
 	public int getLevel() {
 		return level;
 	}
+	
+	public int getExperience() {
+		return exp;
+	}
 
 	public boolean isAlive() {
 		return alive;
+	}
+	
+	public void expIncrease(int expGain) {
+		//experience increase with formula
+		exp += expGain;
+		levelUp();
+	}
+	
+	public void levelUp() {
+		//makes sure level doesnt exceed the 100 cap
+		if(level <=100)
+		{
+			//if they have enough exp they can level up
+			if(exp > Math.pow(level,2)*10)
+			{
+				level++;
+				exp=0;
+			}
+		}
+		else {
+			return;
+		}
 	}
 
 	//function to deal damage to an opponent 
